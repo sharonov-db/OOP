@@ -17,8 +17,9 @@ class Rectangle:
         return self.height * self.width
 
     def __eq__(self, other):
-        if self.area() == other.area():
-            return True
-        else:
-            return False
+        if isinstance(other, self.__class__):
+            if self.area() == other.area():
+                return True
+            else:
+                return False
 
