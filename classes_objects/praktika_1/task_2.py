@@ -48,8 +48,11 @@ class List:
     def __add__(self, other):
         list_sum = list()
         if self.count == other.count:
-            for i in range(self.count):
-                if isinstance(self.list_1[i], int) and isinstance(other.list_1[i], int):
-                    list_sum.append(self.list_1[i]+other.list_1[i])
+            if isinstance(self, List) and isinstance(other, List):
+                for i in range(self.count):
+                    if isinstance(self.list_1[i], int) and isinstance(other.list_1[i], int):
+                        list_sum.append(self.list_1[i]+other.list_1[i])
+            else:
+                raise ValueError("Списки принадлежат разным классам")
         else:
             raise ValueError("Списки имеют разное количество элементов")
