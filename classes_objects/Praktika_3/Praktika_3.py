@@ -95,7 +95,6 @@ class Auto(ABC):
         self.__sred_stoim_perevozki = sred_stoim_perevozki
         self.__capacity = capacity
 
-
     def get_rashod(self, km):
         return km * self.sredrashod
 
