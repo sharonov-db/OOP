@@ -46,15 +46,15 @@ class List:
         self.list_1.remove(elem)
 
     def __add__(self, other):
-        list_sum = list()
+        list_sum = List(self.count)
         if self.count == other.count:
             if isinstance(self, List) and isinstance(other, List):
                 for i in range(self.count):
-                    list_sum.append(self.list_1[i] + other.list_1[i])
+                    list_sum.list_1.append(self.list_1[i] + other.list_1[i])
             else:
-                raise ValueError("Списки принадлежат разным классам")
+                raise TypeError("Списки принадлежат разным классам")
         else:
             raise ValueError("Списки имеют разное количество элементов")
 
-        return list_sum
+        return list_sum.list_1
 
