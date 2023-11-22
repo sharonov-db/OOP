@@ -33,7 +33,7 @@ class Circle(Dot):
         self.r = r
 
 
-class Spheare(Circle):
+class Sphere(Circle):
 
     def __init__(self, x, y, r):
         super().__init__(self, x, y, r)
@@ -67,10 +67,9 @@ class Car:
         return self.__str__()
 
 
-class Taxi_car(Car):
+class TaxiСar(Car):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=100, capacity=100):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
-
 
     free = False
 
@@ -83,17 +82,14 @@ class Taxi_car(Car):
     def set_free_car(self):
         self.free = True
 
-    def set_None_Free_car(self):
+    def set_none_free_car(self):
         self.free = False
 
     def get_is_car_free(self):
-        if self.free:
-            return True
-        else:
-            return False
+        return self.free
 
 
-class Gruz_Car(Taxi_car):
+class GruzCar(Taxi_car):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=200, capacity=300):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
 
