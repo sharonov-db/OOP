@@ -56,3 +56,6 @@ class List:
                 raise ValueError("Списки принадлежат разным классам")
         else:
             raise ValueError("Списки имеют разное количество элементов")
+
+        return list_sum
+    
