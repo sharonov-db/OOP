@@ -3,7 +3,7 @@ from math import pi
 
 class Dot:
 
-    def __init__(self, x, y, color = 'Black'):
+    def __init__(self, x, y, color='Black'):
         self.x = x
         self.y = y
         self.color = color
@@ -39,7 +39,7 @@ class Sphere(Circle):
         super().__init__(self, x, y, r)
 
     def get_volume(self):
-        return (4 * pi * self.r**3)/3
+        return 4/3 * pi * self.r**3
 
     def get_area(self):
         return 4 * pi * self.r**2
@@ -58,7 +58,7 @@ class Car:
         return km * self.sredrashod
 
     def get_stoim(self, km):
-        return km * self.sred_stoim
+        return km * self.sred_stoim_perevozki
 
     def __str__(self):
         return f"{self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity}"
@@ -67,14 +67,15 @@ class Car:
         return self.__str__()
 
 
-class TaxiСar(Car):
+class TaxiCar(Car):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=100, capacity=100):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
 
     free = False
 
     def __str__(self):
-        return f"Такси {self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity} Средняя стоимость проезда = {self.sred_stoim_perevozki}"
+        return (f"Такси {self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity}"
+                f" Средняя стоимость проезда = {self.sred_stoim_perevozki}")
 
     def __repr__(self):
         return self.__str__()
@@ -89,14 +90,15 @@ class TaxiСar(Car):
         return self.free
 
 
-class GruzCar(Taxi_car):
+class GruzCar(TaxiCar):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=200, capacity=300):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
 
     dalnost_active_reisa = 1000
 
     def __str__(self):
-        return f"Грузовое Такси {self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity} Средняя стоимость проезда = {self.sred_stoim_perevozki}"
+        return (f"Грузовое Такси {self.marka} {self.model} Средний расход = {self.sredrashod} "
+                f"Мощность = {self.capacity} Средняя стоимость проезда = {self.sred_stoim_perevozki}")
 
     def __repr__(self):
         return self.__str__()
@@ -106,9 +108,3 @@ class GruzCar(Taxi_car):
 
     def get_dalnost_active_reisa(self):
         return self.dalnost_active_reisa
-
-
-
-
-
-
