@@ -70,8 +70,7 @@ class Car:
 class TaxiCar(Car):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=100, capacity=100):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
-
-    free = False
+        self.free = False
 
     def __str__(self):
         return (f"Такси {self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity}"
@@ -93,8 +92,7 @@ class TaxiCar(Car):
 class GruzCar(TaxiCar):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=200, capacity=300):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
-
-    dalnost_active_reisa = 1000
+        self.dalnost_active_reisa = 1000
 
     def __str__(self):
         return (f"Грузовое Такси {self.marka} {self.model} Средний расход = {self.sredrashod} "
