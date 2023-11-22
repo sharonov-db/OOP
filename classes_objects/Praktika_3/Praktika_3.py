@@ -2,20 +2,16 @@ from math import pi
 from abc import ABC, abstractmethod
 
 
-class Figure:
+class Figure(ABC):
     @abstractmethod
     def __init__(self, x, y, color='Black'):
         self.__x = x
         self.__y = y
         self.__color = color
-        self.__r = 0
 
     @abstractmethod
     def get_area(self):
         return 0
-
-    def set_radius(self, r):
-        self.r = r
 
     def __repr__(self):
         return self.__str__()
@@ -44,14 +40,6 @@ class Figure:
     def color(self, value):
         self.__color = value
 
-    @property
-    def r(self):
-        return self.__r
-
-    @r.setter
-    def r(self, value):
-        self.__r = value
-
 
 class Dot(Figure):
 
@@ -66,6 +54,17 @@ class Circle(Dot):
 
     def __int__(self, x, y, r=1):
         super().__init__(self, x, y)
+        self.__r = r
+
+    @property
+    def r(self):
+        return self.__r
+
+    @r.setter
+    def r(self, value):
+        self.__r = value
+
+    def set_radius(self, r):
         self.r = r
 
     def __str__(self):
@@ -87,7 +86,7 @@ class Sphere(Circle):
         return 4 * pi * self.r ** 2
 
 
-class Auto:
+class Auto(ABC):
     @abstractmethod
     def __init__(self, marka, model, sredrashod, sred_stoim_perevozki=0, capacity=100):
         self.__sredrashod = sredrashod
@@ -95,29 +94,13 @@ class Auto:
         self.__model = model
         self.__sred_stoim_perevozki = sred_stoim_perevozki
         self.__capacity = capacity
-        self.__free = False
-        self.__dalnost_active_reisa = 0
+
 
     def get_rashod(self, km):
         return km * self.sredrashod
 
     def get_stoim(self, km):
         return km * self.sred_stoim_perevozki
-
-    def set_dalnost_active_reisa(self, dalnost_active_reisa):
-        self.dalnost_active_reisa = dalnost_active_reisa
-
-    def get_dalnost_active_reisa(self):
-        return self.dalnost_active_reisa
-
-    def set_free_car(self):
-        self.free = True
-
-    def set_none_free_car(self):
-        self.free = False
-
-    def get_is_car_free(self):
-        return self.free
 
     def __repr__(self):
         return self.__str__()
@@ -162,22 +145,6 @@ class Auto:
     def capacity(self, value):
         self.__capacity = value
 
-    @property
-    def free(self):
-        return self.__free
-
-    @free.setter
-    def free(self, value):
-        self.__free = value
-
-    @property
-    def dalnost_active_reisa(self):
-        return self.__dalnost_active_reisa
-
-    @dalnost_active_reisa.setter
-    def dalnost_active_reisa(self, value):
-        self.__dalnost_active_reisa = value
-
 
 class Car(Auto):
     def __init__(self, marka, model, sredrashod, sred_stoim_perevozki=0, capacity=100):
@@ -190,18 +157,50 @@ class Car(Auto):
 class TaxiCar(Car):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=100, capacity=100):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
-        self.free = False
+        self.__free = False
 
     def __str__(self):
         return (f"Такси {self.marka} {self.model} Средний расход = {self.sredrashod} Мощность = {self.capacity}"
                 f" Средняя стоимость проезда = {self.sred_stoim_perevozki}")
 
+    @property
+    def free(self):
+        return self.__free
+
+    @free.setter
+    def free(self, value):
+        self.__free = value
+
+    def set_free_car(self):
+        self.free = True
+
+    def set_none_free_car(self):
+        self.free = False
+
+    def get_is_car_free(self):
+        return self.free
+
 
 class GruzCar(TaxiCar):
     def __int__(self, marka, model, sredrashod, sred_stoim_perevozki=200, capacity=300):
         super().__init__(self, marka, model, sredrashod, sred_stoim_perevozki, capacity)
-        self.dalnost_active_reisa = 1000
+        self.__dalnost_active_reisa = 1000
+
+    @property
+    def dalnost_active_reisa(self):
+        return self.__dalnost_active_reisa
+
+    @dalnost_active_reisa.setter
+    def dalnost_active_reisa(self, value):
+        self.__dalnost_active_reisa = value
 
     def __str__(self):
         return (f"Грузовое Такси {self.marka} {self.model} Средний расход = {self.sredrashod} "
                 f"Мощность = {self.capacity} Средняя стоимость проезда = {self.sred_stoim_perevozki}")
+
+    def set_dalnost_active_reisa(self, dalnost_active_reisa):
+        self.dalnost_active_reisa = dalnost_active_reisa
+
+    def get_dalnost_active_reisa(self):
+        return self.dalnost_active_reisa
+
