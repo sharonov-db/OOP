@@ -16,6 +16,8 @@ class List:
             for k in args:
                 if isinstance(k, int):
                     list_2.append(k)
+                else:
+                    raise ValueError("Можно вводить только целочисленные элементы")
 
             self.list_1 = list_2
 
