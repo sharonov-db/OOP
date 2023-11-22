@@ -10,8 +10,8 @@ class List:
 
     def input_data(self, *args):
         list_2 = list()
-        if args.count() != self.count:
-            raise(f"Введите число элементов списка, равное {self.count}")
+        if len(args) != self.count:
+            raise ValueError(f"Введите число элементов списка, равное {self.count}")
         else:
             for k in args:
                 if isinstance(k, int):
@@ -19,16 +19,12 @@ class List:
 
             self.list_1 = list_2
 
-        return
-
     def feel_random_data(self):
         list_2 = list()
         for k in range(self.count):
             list_2.append(random.randint(1, 1000))
 
         self.list_1 = list_2
-
-        return
 
     def __str__(self):
         return f"Список: {self.list_1}"
@@ -47,15 +43,11 @@ class List:
     def remove_element(self, elem):
         self.list_1.remove(elem)
 
-        return
-
     def __add__(self, other):
         list_sum = list()
-        if self.count() == other.count():
-            for i in range(self.list_1.count()):
+        if self.count == other.count:
+            for i in range(self.count):
                 if isinstance(self.list_1[i], int) and isinstance(other.list_1[i], int):
                     list_sum.append(self.list_1[i]+other.list_1[i])
-
-        return
-
-
+        else:
+            raise ValueError("Списки имеют разное количество элементов")
