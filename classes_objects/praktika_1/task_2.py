@@ -50,7 +50,7 @@ class List:
         if self.count == other.count:
             if isinstance(self, List) and isinstance(other, List):
                 for i in range(self.count):
-                    list_sum.append(self.list_1[i]+other.list_1[i])
+                    list_sum.append(self.list_1[i] + other.list_1[i])
             else:
                 raise ValueError("Списки принадлежат разным классам")
         else:
