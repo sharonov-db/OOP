@@ -10,9 +10,13 @@ def print_hi(name):
     # print(sum(3, 5))  # Press Ctrl+F8 to toggle the breakpoint.
     s = Sortirovka()
     n = [1, 0, 2]
-    s.sortirovka(n)
+    print(f"n = {n}")
+    print(f"sorted n = {s.sortirovka(n)}")
+    print()
     n = (1, 0, 2)
-    s.sortirovka(n)
+    print(f"n = {n}")
+    print(f"sorted n = {s.sortirovka(n)}")
+
 
 
 

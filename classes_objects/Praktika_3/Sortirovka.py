@@ -22,10 +22,10 @@ class Sortirovka:
                 a = tuple(a)
 
             self.sorted = a
-            print(a)
+            return a
 
         if isinstance(val, list) or isinstance(val, tuple):
-            __do_sortirovka(val)
+            return __do_sortirovka(val)
         else:
             raise TypeError("Non sortable strukture")
 
