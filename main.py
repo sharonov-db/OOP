@@ -16,6 +16,10 @@ def print_hi(name):
     n = (1, 0, 2)
     print(f"n = {n}")
     print(f"sorted n = {s.sortirovka(n)}")
+    print()
+    n = (1, "test", 2)
+    print(f"n = {n}")
+    print(f"sorted n = {s.sortirovka(n)}")
 
 
 
