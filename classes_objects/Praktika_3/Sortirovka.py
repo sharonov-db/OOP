@@ -15,7 +15,7 @@ class Sortirovka:
         else:
             a = tuple(args[0])
 
-        n = len(args[0])
+        n = len(a)
 
         q = type(a[0])
         for item in a:
