@@ -1,21 +1,17 @@
 class Sortirovka:
 
     def __int__(self):
-        self.sorted = []
+        self.sorted = None
 
-    def sortirovka(self, *args):
-
-        if not isinstance(args[0], list):
-            raise TypeError("Non sortable value")
+    def sortirovka(self, val):
+        if isinstance(val, list) or isinstance(val, tuple):
+            self.do_sortirovka(val)
         else:
-            a = list(args[0])
+            raise TypeError("Non sortable strukture")
 
-        if not isinstance(args[0], tuple):
-            raise TypeError("Non sortable value")
-        else:
-            a = tuple(args[0])
-
-        n = len(a)
+    def do_sortirovka(self, val):
+        n = len(val)
+        a = list(val)
 
         q = type(a[0])
         for item in a:
@@ -27,4 +23,8 @@ class Sortirovka:
                 if a[j] > a[j + 1]:
                     a[j], a[j + 1] = a[j + 1], a[j]
 
+        if isinstance(val, tuple):
+            a = tuple(a)
+
         self.sorted = a
+        print(a)
