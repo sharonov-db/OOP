@@ -20,7 +20,7 @@ class Sortirovka:
         q = type(a[0])
         for item in a:
             if type(item) is not q:
-                raise TypeError("Different values in tuple")
+                raise TypeError("Different values in strukture")
 
         for i in range(n - 1):
             for j in range(n - i - 1):
